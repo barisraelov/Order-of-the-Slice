@@ -1,0 +1,5 @@
+﻿Empacotatron
+Source: https://opengameart.org/content/empacotatron
+Author: Fupi
+License: CC0
+Selected pieces only: empacotatron_menu.ogg, empacotatron_loop.ogg

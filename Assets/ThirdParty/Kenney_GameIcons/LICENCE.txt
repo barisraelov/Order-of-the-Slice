@@ -1,0 +1,7 @@
+﻿Kenney Game Icons
+Source: https://kenney.nl/assets/game-icons
+Also published at: https://opengameart.org/content/game-icons
+Author: Kenney
+License: CC0
+Selected pieces only: checkmark, pause, audioOn, audioOff (white 2x).
+Credit "Kenney.nl" or "www.kenney.nl" (optional).

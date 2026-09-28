@@ -1,0 +1,7 @@
+﻿Kenney Interface Sounds
+Source: https://kenney.nl/assets/interface-sounds
+Also published at: https://opengameart.org/content/interface-sounds
+Author: Kenney
+License: CC0
+Selected pieces only: click_001, confirmation_001, back_001.
+Credit "Kenney.nl" or "www.kenney.nl" (optional).

@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d19e7767de31f6a419199d9ad8ce6282, type: 3}
+  m_Name: GameConfig
+  m_EditorClassIdentifier: Assembly-CSharp::GameConfig
+  launchSpeedRange: {x: 11, y: 15}
+  spawnInterval: 0.85
+  horizontalImpulse: 2.5
+  despawnY: -7
+  bombChance: 0.08
+  decoyChance: 0.45
+  maxRequiredWait: 1.4
+  recipeTime: 14
+  startingLives: 3
+  minimumSliceSpeed: 700
+  referenceWidth: 1920
+  referenceHeight: 1080
+  ingredientPrewarm: 8
+  bombPrewarm: 4
+  ingredientMax: 24
+  bombMax: 12
+  countdownStepSeconds: 0.75
+  gameOverDelay: 1
+  restartLockout: 0.75
+  recipeTransitionSeconds: 0.5
+  recipeLengthThresholds: {x: 3, y: 6}
+  spawnIntervalStep: 0.05
+  minSpawnInterval: 0.55
+  launchSpeedStep: 0.35
+  maxLaunchSpeedBonus: 2
+  ingredientScore: 10
+  recipeCompletionScorePerIngredient: 50
+  comboTier2At: 5
+  comboTier3At: 10
+  comboTier4At: 15
+  comboMultiplier1: 1
+  comboMultiplier2: 2
+  comboMultiplier3: 3
+  comboMultiplier4: 4
+  feverCapacity: 100
+  feverChargePerIngredient: 8
+  feverChargePerCompletion: 16
+  feverDuration: 8
+  feverSpawnInterval: 0.55
+  feverScoreMultiplier: 2

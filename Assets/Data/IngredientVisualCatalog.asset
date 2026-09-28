@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c31e2b4d8f4096b1e25a0c9d4f6e18, type: 3}
+  m_Name: IngredientVisualCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::IngredientVisualCatalog
+  ingredients:
+  - id: 0
+    whole: {fileID: -6731281561659528778, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    halfA: {fileID: -4788799040894129024, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    halfB: {fileID: -8047764484371942249, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    hudIcon: {fileID: -6731281561659528778, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    effectTint: {r: 0.85, g: 0.18, b: 0.16, a: 1}
+  - id: 1
+    whole: {fileID: -8661811047281671315, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    halfA: {fileID: -211408586625632106, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    halfB: {fileID: 6317615125980567467, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    hudIcon: {fileID: -8661811047281671315, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    effectTint: {r: 0.96, g: 0.93, b: 0.82, a: 1}
+  - id: 2
+    whole: {fileID: -6257828753041549261, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    halfA: {fileID: -2406084886294784839, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    halfB: {fileID: 8823174641552032684, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    hudIcon: {fileID: -6257828753041549261, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    effectTint: {r: 0.22, g: 0.62, b: 0.28, a: 1}
+  - id: 3
+    whole: {fileID: -7822025184709727038, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    halfA: {fileID: 1046069235696942416, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    halfB: {fileID: 6581186779281450362, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    hudIcon: {fileID: -7822025184709727038, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    effectTint: {r: 0.62, g: 0.45, b: 0.32, a: 1}
+  - id: 4
+    whole: {fileID: 6178453329642224724, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    halfA: {fileID: 200151389771670153, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    halfB: {fileID: 3339821540501069835, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    hudIcon: {fileID: 6178453329642224724, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    effectTint: {r: 0.78, g: 0.62, b: 0.86, a: 1}
+  - id: 5
+    whole: {fileID: -2613479392316410858, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    halfA: {fileID: 6729480353550746656, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    halfB: {fileID: 792923063801242283, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    hudIcon: {fileID: -2613479392316410858, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    effectTint: {r: 0.95, g: 0.72, b: 0.18, a: 1}
+  - id: 6
+    whole: {fileID: -3971458433131603532, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    halfA: {fileID: -5106978831702442343, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    halfB: {fileID: 3245482865517274217, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    hudIcon: {fileID: -3971458433131603532, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    effectTint: {r: 0.18, g: 0.32, b: 0.16, a: 1}
+  - id: 7
+    whole: {fileID: 3814923711036820837, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    halfA: {fileID: 5546235703295823531, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    halfB: {fileID: 684081143496166263, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    hudIcon: {fileID: 3814923711036820837, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    effectTint: {r: 0.55, g: 0.82, b: 0.32, a: 1}
+  - id: 8
+    whole: {fileID: 4315053898943188593, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    halfA: {fileID: -2813791524798409941, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    halfB: {fileID: -2981693521761214504, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    hudIcon: {fileID: 4315053898943188593, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    effectTint: {r: 0.82, g: 0.64, b: 0.38, a: 1}
+  - id: 9
+    whole: {fileID: -4659982618932593752, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    halfA: {fileID: 5783271636620013933, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    halfB: {fileID: -1314615952235491013, guid: dc3363e9e7e097d47b35eaaf0b51cffc, type: 3}
+    hudIcon: {fileID: -4659982618932593752, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+    effectTint: {r: 0.98, g: 0.92, b: 0.55, a: 1}
+  bombSprite: {fileID: -2645361854805593308, guid: 8cf8b7e6ff1e7f54d91751ff57864961, type: 3}
+  bombTint: {r: 1, g: 1, b: 1, a: 1}
+  visualWorldSize: 0.9

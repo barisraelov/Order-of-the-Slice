@@ -3,13 +3,13 @@
 | | |
 |---|---|
 | **Working title** | *Order of the Slice* |
-| **Team** | Bar Israelov — 316199579 (Core Gameplay, Architecture & Object Pooling)<br>Linoy Kasuker — 208010751 (Recipe Systems, UI/UX & Visual Polish)<br>Both (Programming, Game Design, Android Integration, Documentation & QA) |
+| **Team** | Bar Israelov — 316199579 — technical architecture, core gameplay, slicing/input systems, object pooling, and platform/build integration.<br>Linoy Kasuker — 208010751 — recipe and progression design, UI/UX, visual and audio presentation, content integration, playtesting, and balancing.<br>Both — programming, game design, Android integration, documentation, testing, and QA. |
 | **Genre** | 2D arcade / recipe-sequencing / score-chaser |
 | **Target platform** | Windows PC + Android APK |
 | **Engine / Unity version** | Unity 6 (6000.3.20f1), URP 2D |
 | **Orientation & reference resolution** | Landscape, 1920 × 1080 reference |
 | **Expected session length** | 2–8 minutes |
-| **Document version** | v0.2 — 2026-09-14 |
+| **Document version** | v1.0 — 2026-09-24 |
 
 ---
 
@@ -120,9 +120,9 @@ stateDiagram-v2
 
 ![Screen and HUD layout](images/screens-wireframe.png)
 
-1. **Main Menu** — title, Play, saved high score, “Slice the recipe in order. Avoid bombs.”, and Quit on Windows only.
+1. **Main Menu** — title, saved high score, and the instruction line. Buttons, top to bottom: Play, Credits, Quit. Quit is visible on Windows and Android.
 2. **Countdown** — gameplay remains visible behind `3–2–1–GO`; slicing and spawning unlock at `GO`.
-3. **Gameplay HUD** — lives at top left; active recipe and highlighted next ingredient at top center; recipe timer below it; score and Pause at top right; combo near the action; Fever meter along the lower safe area.
+3. **Gameplay HUD** — Lives and Time share the left cluster; recipe cards sit at the top centre, with the current ingredient shown by a gold highlight; Score and Combo share the right cluster; the Fever meter sits along the bottom safe area. Pause is a separate button.
 4. **Pause** — dimmed gameplay with Resume, Restart, and Main Menu. Game time, recipe time, spawning, and slicing are frozen.
 5. **Game Over** — final score, high score, optional “NEW HIGH SCORE”, Restart, and Main Menu.
 
@@ -137,11 +137,12 @@ The game uses a colourful cartoon kitchen style. Flat, readable sprites gain dep
 
 | Asset | Variants / frames | Source & licence | Use |
 |---|---|---|---|
-| Ingredient sprites | 10 whole ingredients + two matching halves for each | Original team-created artwork; owned by the team | Play objects and sliced halves |
-| Bomb and kitchen background | 1 bomb; 1 layered background | Original team-created artwork; owned by the team | Hazard and environment |
+| Ingredient sprites | 10 whole ingredients + two matching halves for each | AI-assisted image generation with team direction | Play objects and sliced halves |
+| Bomb and kitchen background | 1 bomb; 1 kitchen background | AI-assisted image generation with team direction | Hazard and environment |
+| Application icon | Adaptive foreground/background layers + composed icon | AI-assisted image generation with team direction | Android and Windows launcher icon |
 | UI panels and buttons | Selected pieces only | [Kenney UI Pack](https://kenney.nl/assets/ui-pack), CC0 | Menus and HUD framing |
-| UI symbols | Heart, pause, sound, and navigation symbols | [Kenney Game Icons](https://kenney.nl/assets/game-icons), CC0 | Readable interface icons |
-| Splats and particles | Four colour variants | [Kenney Splat Pack](https://kenney.nl/assets/splat-pack), CC0, recoloured by the team | Correct-slice VFX |
+| UI symbols | Pause, sound, and check symbols | [Kenney Game Icons](https://kenney.nl/assets/game-icons), CC0 | Readable interface icons |
+| Slice burst | Pooled tinted particle burst | Project `ParticleSystem` on `SplatBurst`; no imported splat sheet | Slice feedback |
 | UI sounds | Click, confirm, and cancel | [Kenney Interface Sounds](https://kenney.nl/assets/interface-sounds), CC0 | Menu feedback |
 | Slice sounds | Several short variants | [8 Wet Squish, Slurp Impacts](https://opengameart.org/content/8-wet-squish-slurp-impacts), CC0 | Ingredient slices |
 | Bomb sound | 1 short variant | [Dynamite Sound Effect](https://opengameart.org/content/dynamite-sound-effect), CC0 | Bomb hit |
@@ -149,7 +150,7 @@ The game uses a colourful cartoon kitchen style. Flat, readable sprites gain dep
 
 **Licence note:** the listed external assets are CC0 and may be modified and distributed; every source will still be credited. The Fruit Ninja screenshot is documentation-only and will not ship. No unlicensed, paid, or copied Fruit Ninja asset will be used.
 
-**Technical art rules:** transparent PNG, 100 PPU, consistent outlines, maximum 2048-pixel textures, Android compression, and one Sprite Atlas if useful. Sorting: background → shadows → objects → halves → particles/trail → UI.
+**Technical art rules:** transparent PNG sprites, 100 PPU, consistent outlines, and a 2048-pixel import cap for the large art sheets. Sorting: background → shadows → objects → halves → particles/trail → UI.
 
 ---
 
@@ -159,7 +160,7 @@ The game uses a colourful cartoon kitchen style. Flat, readable sprites gain dep
 
 **Packages / systems used:** URP 2D Renderer, Input System, TextMeshPro, Physics2D, `UnityEngine.Pool.ObjectPool<T>`, Sprite Atlas, Particle System, and `PlayerPrefs`.
 
-**Target devices:** Windows 10/11 PC at 1920 × 1080; Xiaomi Redmi Note 12S at 2400 × 1080 in Landscape (native panel: 1080 × 2400). The Android build targets 60 FPS and must not remain below 30 FPS during a full run. The installed Android version will be recorded during the first physical-device test.
+**Target devices:** Windows 10/11 PC at 1920 × 1080; Xiaomi Redmi Note 12S at 2400 × 1080 in Landscape (native panel: 1080 × 2400, Android 15). The Android build targets 60 FPS.
 
 **Architecture:**
 
@@ -199,7 +200,7 @@ graph TD
 | `AudioManager` | Persists across scenes and plays music and SFX. |
 | `SaveService` | Reads and writes the local high score. |
 
-### Course features being implemented
+### Course features implemented
 
 1. **Object pooling** — reuses ingredients, bombs, halves, trails, and frequent effects to avoid garbage-collection spikes.
 2. **Coroutines** — run spawning, countdown, recipe transitions, Fever, and Game Over delays without blocking frames.
@@ -210,7 +211,7 @@ graph TD
 7. **PlayerPrefs** — stores only the best local score.
 8. **Mobile build** — shared pointer input, landscape safe-area UI, 60 FPS target, and physical Redmi Note 12S testing.
 
-**External-code policy:** development starts in a new Unity 6000.3.20f1 project. The public-domain [Brackeys Fruit Ninja Replica](https://github.com/Brackeys/Fruit-Ninja-Replica) may guide the basic slice, launch, and split-object logic, which will be rewritten for the Input System, pooling, Android, and this architecture. Course projects guide the patterns. All reuse is credited, and the team must explain every submitted line.
+**External-code policy:** Slice and launch feel referenced from the public-domain [Brackeys Fruit Ninja Replica](https://github.com/Brackeys/Fruit-Ninja-Replica). The implementation was rewritten for this project’s Input System, pooling, and architecture. No Brackeys assets are included. Course projects guide the patterns. All reuse is credited.
 
 ---
 
@@ -218,23 +219,22 @@ graph TD
 
 ### 8.1 MVP — the game is not a game without these
 
-- [ ] Playable Windows build and Android APK using mouse and touch.
-- [ ] Ten readable ingredients, each with a whole sprite and two prepared halves.
-- [ ] At least nine recipes: three each of lengths 3, 4, and 5.
-- [ ] Ordered recipe progress, highlighted next ingredient, recipe timer, and fair required-ingredient spawning.
-- [ ] Wrong ingredients, bombs, three lives, Game Over, score, combo tiers, and automatic Fever.
-- [ ] Increasing recipe length and spawn pressure using Inspector-configurable values.
-- [ ] Main Menu, countdown, HUD, Pause, Game Over, restart flow, and saved high score.
-- [ ] The listed course patterns used as described above.
-- [ ] Responsive 1920 × 1080 UI with safe-area handling on the physical Android test device.
-- [ ] Approved art, music, SFX, feedback, Credits, and a complete start-to-restart flow.
+- [x] Playable Windows build and Android APK using mouse and touch.
+- [x] Ten readable ingredients, each with a whole sprite and two prepared halves.
+- [x] At least nine recipes: three each of lengths 3, 4, and 5.
+- [x] Ordered recipe progress, highlighted next ingredient, recipe timer, and fair required-ingredient spawning.
+- [x] Wrong ingredients, bombs, three lives, Game Over, score, combo tiers, and automatic Fever.
+- [x] Increasing recipe length and spawn pressure using Inspector-configurable values.
+- [x] Main Menu, countdown, HUD, Pause, Game Over, restart flow, and saved high score.
+- [x] The listed course patterns used as described above.
+- [x] Responsive 1920 × 1080 UI with safe-area handling on the physical Android test device.
+- [x] Art, music, SFX, feedback, Credits, and a complete start-to-restart flow.
 
 ### 8.2 Polish — if the MVP is done and playable
 
-- [ ] Smooth swipe trail, spinning prepared halves, coloured splats, and ingredient-specific particles.
-- [ ] Small hit-stop, controlled camera shake, score pop-ups, sound variation, and UI animation.
-- [ ] Recipe-complete celebration and a clear audiovisual Fever transformation.
-- [ ] Directional-slice bonus, only after the full PC and Android MVP is stable.
+- [x] Smooth swipe trail, spinning prepared halves, and a tinted particle burst.
+- [x] Small hit-stop, controlled camera shake, score pop-ups, sound variation, and UI animation.
+- [x] Recipe-complete feedback and a clear audiovisual Fever transformation.
 
 ### 8.3 Explicitly out of scope — we are **not** building these
 
@@ -244,6 +244,7 @@ graph TD
 - Runtime mesh slicing; each ingredient uses prepared half sprites.
 - Gamepad support, portrait mode, a 3D world, VR, custom knives, or playable characters.
 - A save system beyond one local `PlayerPrefs` high score.
+- Directional slicing. It was considered and intentionally not shipped.
 
 ---
 
@@ -253,3 +254,4 @@ graph TD
 |---|---|---|
 | v0.1 | 2026-09-14 | Initial draft prepared for team review; no implementation started. |
 | v0.2 | 2026-09-14 | Shortened wording, clarified Android Back behaviour, and replaced the reference image with official gameplay. |
+| v1.0 | 2026-09-24 | Shipped game: gameplay systems, nine recipes and difficulty, score/Fever, UI, art/audio/feedback. Windows and a physical Redmi Note 12S (Android 15) were verified. Directional slicing was not shipped. |
